@@ -9,11 +9,11 @@ return (
             <h1>Login</h1>
             <div className='input-box'>
                 <input type='text' placeholder='Username' required/>
-                <FaUserAlt />
+                <FaUserAlt className='Icon1' />
             </div>
             <div className='input-box'>
                 <input type='password' placeholder='Password' required />
-                <FaLock />
+                <FaLock className='Icon2' />
             </div>
             <div className='remember-forgot'>
                 <label htmlFor=''><input type='checkbox'/>Remember me</label>
