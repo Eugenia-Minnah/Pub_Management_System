@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import {Link} from 'react-router-dom';
 import React from 'react';
 import { FaUserAlt, FaLock, FaEnvelope } from "react-icons/fa";
 import '../Styles/Login.css';
@@ -10,10 +11,6 @@ import facebook from '../assets/facebook_icon.png';
 
 export const Signup = () => {
     const [ action, setAction] = useState('');
-
-    const loginLink = () => {
-        setAction('');
-    };
 
     return (
         <div className={`container ${action}`}>
@@ -40,7 +37,7 @@ export const Signup = () => {
                 </div>
                 <button className='button' type='submit'>Sign up</button>
                 <div className='register-link'>
-                    <p>Already have an account? <a href='#' onClick={loginLink}>Login</a></p>
+                    <p>Already have an account? <Link to='/Login'>Login</Link></p>
                 </div>
                 <div className='social_icons'>
                 <a href='/' className='social'><img src={google} alt='google'/></a>

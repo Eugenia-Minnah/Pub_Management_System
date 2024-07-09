@@ -7,13 +7,10 @@ import bg from '../assets/bg.jpg';
 import google from '../assets/google.png';
 import apple from '../assets/apple.png';
 import facebook from '../assets/facebook_icon.png';
+import { Link } from 'react-router-dom';
 
 export const Login = () => {
     const [ action, setAction] = useState('');
-
-    const registerLink = () => {
-        setAction('active');
-    };
 
     return (
         <div className={`container ${action}`}>
@@ -33,11 +30,11 @@ export const Login = () => {
                 </div>
                 <div className='remember-forgot'>
                     <label><input type='checkbox' />Remember me</label>
-                    <a href='/'>Forgot password?</a>
+                    <Link to='/Login'>Forgot password?</Link>
                 </div>
                 <button className='button' type='submit'>Login</button>
                 <div className='register-link'>
-                    <p>Don't have an account? <a href='#' onClick={registerLink}>Sign up</a></p>
+                    <p>Don't have an account?<Link to='/Signup'>Sign up</Link></p>
                 </div>
                 <div className='social_icons'>
                 <a href='/' className='social'><img src={google} alt='google'/></a>
