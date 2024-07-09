@@ -8,11 +8,11 @@ import google from '../assets/google.png';
 import apple from '../assets/apple.png';
 import facebook from '../assets/facebook_icon.png';
 
-export const Login = () => {
+export const Signup = () => {
     const [ action, setAction] = useState('');
 
-    const registerLink = () => {
-        setAction('active');
+    const loginLink = () => {
+        setAction('');
     };
 
     return (
@@ -22,22 +22,25 @@ export const Login = () => {
                 <div className='logo'>
                     <img src={logo} alt="georges' pub" />
                 </div>
-                <h1>Log in</h1>
+                <h1>Sign up</h1>
                 <div className='input-box'>
                     <FaUserAlt className='icon' />
                     <input type='text' placeholder='Username' required />
                 </div>
                 <div className='input-box'>
+                    <FaEnvelope className='icon' />
+                    <input type='email' placeholder='Email' required />
+                </div>
+                <div className='input-box'>
                     <FaLock className='icon' />
                     <input type='password' placeholder='Password' required />
                 </div>
-                <div className='remember-forgot'>
-                    <label><input type='checkbox' />Remember me</label>
-                    <a href='/'>Forgot password?</a>
+                <div className='conditions'>
+                    <label><input type='checkbox' />I agree to the terms & conditions</label>
                 </div>
-                <button className='button' type='submit'>Login</button>
+                <button className='button' type='submit'>Sign up</button>
                 <div className='register-link'>
-                    <p>Don't have an account? <a href='#' onClick={registerLink}>Sign up</a></p>
+                    <p>Already have an account? <a href='#' onClick={loginLink}>Login</a></p>
                 </div>
                 <div className='social_icons'>
                 <a href='/' className='social'><img src={google} alt='google'/></a>

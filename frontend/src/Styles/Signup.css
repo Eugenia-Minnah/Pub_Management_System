@@ -18,7 +18,7 @@
     object-fit: cover;
 }
 
-.form-container {
+.form-container  {
     padding: 20px;
     width: 100%;
     box-sizing: border-box;
@@ -63,7 +63,7 @@
     color: #aaa;
 }
 
-.remember-forgot {
+.conditions {
     display: flex;
     justify-content: space-between;
     font-size: 14.5px;
@@ -72,12 +72,8 @@
     color: #4d4444;
 }
 
-.remember-forgot label input{
+.conditions label input{
     margin-right: 4px;
-}
-
-.remember-forgot a:hover {
-    text-decoration: underline;
 }
 
 .button {
