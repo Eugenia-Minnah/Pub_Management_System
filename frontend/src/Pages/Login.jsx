@@ -8,6 +8,7 @@ import apple from '../assets/apple.png';
 import facebook from '../assets/facebook_icon.png';
 
 export const Login = () => {
+    
     return (
         <div className='container'>
             <img src={bg} alt="Food" />
@@ -18,11 +19,15 @@ export const Login = () => {
                 <h1>Log in</h1>
                 <div className='input-box'>
                     <FaUserAlt className='icon' />
-                    <input type='text' placeholder='Email' required />
+                    <input type='text' placeholder='Username' required />
                 </div>
                 <div className='input-box'>
                     <FaLock className='icon' />
                     <input type='password' placeholder='Password' required />
+                </div>
+                <div className='remember-forgot'>
+                    <label><input type='checkbox' />Remember me</label>
+                    <a href='/'>Forgot password?</a>
                 </div>
                 <button className='button' type='submit'>Login</button>
                 <div className='register-link'>

@@ -54,12 +54,26 @@
     font-size: 16px;
 }
 
+
 .input-box .icon {
     position: absolute;
     left: 10px;
     top: 50%;
     transform: translateY(-50%);
     color: #aaa;
+}
+
+.remember-forgot {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14.5px;
+    margin: -15px 0 15px;
+    padding-top: 15px;
+    color: #554646;
+}
+
+.remember-forgot a:hover {
+    text-decoration: underline;
 }
 
 .button {
