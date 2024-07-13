@@ -1,0 +1,38 @@
+/* AddEmployeeForm.css */
+.add-employee-form {
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.add-employee-form h2 {
+    margin-bottom: 15px;
+}
+
+.add-employee-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.add-employee-form button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.add-employee-form button[type="submit"] {
+    background-color: #007bff;
+    color: white;
+}
+
+.add-employee-form button[type="button"] {
+    background-color: #6c757d;
+    color: white;
+}

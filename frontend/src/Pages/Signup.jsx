@@ -1,8 +1,7 @@
-import { useState } from 'react';
-import {Link} from 'react-router-dom';
-import React from 'react';
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { FaUserAlt, FaLock, FaEnvelope } from "react-icons/fa";
-import '../Styles/Login.css';
+import '../Styles/Signup.css';
 import logo from '../assets/pub_logo.png';
 import bg from '../assets/bg.jpg';
 import google from '../assets/google.png';
@@ -10,39 +9,91 @@ import apple from '../assets/apple.png';
 import facebook from '../assets/facebook_icon.png';
 
 export const Signup = () => {
-    const [ action, setAction] = useState('');
+    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [termsAccepted, setTermsAccepted] = useState(false);
+    const [error, setError] = useState('');
+    const navigate = useNavigate();
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+
+        // Basic form validation
+        if (!username || !email || !password) {
+            setError('All fields are required');
+            return;
+        }
+
+        if (!termsAccepted) {
+            setError('Please accept the terms & conditions');
+            return;
+        }
+
+        setError('');
+
+        navigate('/Admin');
+    };
 
     return (
-        <div className={`container ${action}`}>
+        <div className='container'>
             <img src={bg} alt="Food" />
             <div className='form-container'>
                 <div className='logo'>
-                    <img src={logo} alt="georges' pub" />
+                    <img src={logo} alt="George's Pub" />
                 </div>
                 <h1>Sign up</h1>
-                <div className='input-box'>
-                    <FaUserAlt className='icon' />
-                    <input type='text' placeholder='Username' required />
-                </div>
-                <div className='input-box'>
-                    <FaEnvelope className='icon' />
-                    <input type='email' placeholder='Email' required />
-                </div>
-                <div className='input-box'>
-                    <FaLock className='icon' />
-                    <input type='password' placeholder='Password' required />
-                </div>
-                <div className='conditions'>
-                    <label><input type='checkbox' />I agree to the terms & conditions</label>
-                </div>
-                <button className='button' type='submit'>Sign up</button>
+                {error && <p className="error-message">{error}</p>}
+                <form onSubmit={handleSubmit}>
+                    <div className='input-box'>
+                        <FaUserAlt className='icon' />
+                        <input
+                            type='text'
+                            placeholder='Username'
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <div className='input-box'>
+                        <FaEnvelope className='icon' />
+                        <input
+                            type='email'
+                            placeholder='Email'
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <div className='input-box'>
+                        <FaLock className='icon' />
+                        <input
+                            type='password'
+                            placeholder='Password'
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <div className='conditions'>
+                        <label>
+                            <input
+                                type='checkbox'
+                                checked={termsAccepted}
+                                onChange={(e) => setTermsAccepted(e.target.checked)}
+                                required
+                            /> I agree to the terms & conditions
+                        </label>
+                    </div>
+                    <button className='button' type='submit'>Sign up</button>
+                </form>
                 <div className='register-link'>
                     <p>Already have an account? <Link to='/Login'>Login</Link></p>
                 </div>
                 <div className='social_icons'>
-                <a href='/' className='social'><img src={google} alt='google'/></a>
-                <a href='/' className='social'><img src={apple} alt='apple'/></a>
-                <a href='/' className='social'><img src={facebook} alt='fb'/></a>
+                    <a href='/' className='social'><img src={google} alt='Google' /></a>
+                    <a href='/' className='social'><img src={apple} alt='Apple' /></a>
+                    <a href='/' className='social'><img src={facebook} alt='Facebook' /></a>
                 </div>
             </div>
         </div>

@@ -2,13 +2,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: white;
+    background-color: #ffffff;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     overflow: hidden;
-    max-width: 900px;
+    max-width: 950px;
     width: 100%;
-    margin: 20px auto; /* Center the container */
+    margin: 20px auto;
 }
 
 .container img {
@@ -18,44 +18,49 @@
 }
 
 .form-container {
-    padding: 20px;
+    padding: 30px;
     width: 100%;
     box-sizing: border-box;
 }
 
 .form-container .logo {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
 .form-container .logo img {
     max-width: 80px;
-    margin-left: 140px;
 }
 
 .form-container h1 {
-    font-size: 24px;
+    font-size: 28px;
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
 .input-box {
     position: relative;
     width: 100%;
-    margin: 10px 0;
+    margin: 15px 0;
 }
 
 .input-box input {
     width: 100%;
-    padding: 12px 12px 12px 40px;
+    padding: 14px 12px 14px 40px;
     border-radius: 5px;
     border: 1px solid #ddd;
     font-size: 16px;
+    transition: border 0.3s;
+}
+
+.input-box input:focus {
+    border-color: var(--color-blue_black);
+    outline: none;
 }
 
 .input-box .icon {
     position: absolute;
-    left: 10px;
+    left: 12px;
     top: 50%;
     transform: translateY(-50%);
     color: #aaa;
@@ -64,9 +69,8 @@
 .remember-forgot {
     display: flex;
     justify-content: space-between;
-    font-size: 14.5px;
-    margin: -15px 0 15px;
-    padding-top: 15px;
+    font-size: 14px;
+    margin: 5px 0 20px;
     color: #4d4444;
 }
 
@@ -76,6 +80,21 @@
 
 .remember-forgot a:hover {
     text-decoration: underline;
+}
+
+.error{
+    color: red;
+    text-align: center;
+    font-size: 15px;
+    margin-top: 5px;
+}
+
+.conditions {
+    margin-bottom: 15px;
+}
+
+.conditions label {
+    font-size: 14px;
 }
 
 .button {
@@ -88,15 +107,21 @@
     font-size: 16px;
     cursor: pointer;
     margin-top: 10px;
+    transition: background-color 0.3s;
+}
+
+.button:hover {
+    background-color:var(--color-yellow)
 }
 
 .register-link {
     text-align: center;
-    margin-top: 20px;
+    margin-top: 25px;
+    font-size: 15px;
 }
 
 .register-link a {
-    color: var(--color-yellow);
+    color:var(--color-yellow);
     text-decoration: none;
 }
 
@@ -109,12 +134,12 @@
     flex-direction: row;
     justify-content: center;
     gap: 15px;
-    margin-top: 20px;
+    margin-top: 25px;
 }
 
 .social {
-    background-color: var(--color-gray);
-    padding: 10px;
+    background-color: #f0f0f0;
+    padding: 12px;
     border-radius: 30px;
     align-items: center;
     display: flex;
@@ -122,8 +147,8 @@
 }
 
 .social img {
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
 }
 
 /* Media Queries for Responsiveness */
@@ -148,7 +173,7 @@
     }
 
     .form-container h1 {
-        font-size: 20px;
+        font-size: 22px;
     }
 
     .input-box input {
