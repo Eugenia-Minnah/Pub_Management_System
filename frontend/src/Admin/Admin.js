@@ -6,7 +6,8 @@ import './Admin.css';
 //import { EmployeeAccounts } from '../Pages/EmployeeAccounts';
 //import Dashboard  from '../Pages/Dashboard';
 //import { Reservations } from '../Pages/Reservations';
-import { ManageMenu } from '../Pages/ManageMenu';
+//import { ManageMenu } from '../Pages/ManageMenu';
+import { Order } from '../Pages/Order';
 
 export const Admin = () => {
   return (
@@ -15,7 +16,7 @@ export const Admin = () => {
       <main className="main-content">
         <Header className="header" />
         <div className="content">
-          <ManageMenu />
+          <Order />
         </div>
       </main>
     </div>
