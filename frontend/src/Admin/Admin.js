@@ -4,7 +4,8 @@ import { Header } from '../components/Header';
 //import { Inventory } from '../Pages/Inventory';
 import './Admin.css';
 //import { EmployeeAccounts } from '../Pages/EmployeeAccounts';
-import Dashboard  from '../Pages/Dashboard';
+//import Dashboard  from '../Pages/Dashboard';
+import { Reservations } from '../Pages/Reservations';
 
 export const Admin = () => {
   return (
@@ -13,7 +14,7 @@ export const Admin = () => {
       <main className="main-content">
         <Header className="header" />
         <div className="content">
-          <Dashboard />
+          <Reservations />
         </div>
       </main>
     </div>
