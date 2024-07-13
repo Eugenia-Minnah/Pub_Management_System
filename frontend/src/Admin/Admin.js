@@ -3,7 +3,7 @@ import { SideBar } from '../components/SideBar';
 import { Header } from '../components/Header';
 //import { Inventory } from '../Pages/Inventory';
 import './Admin.css';
-import { EmployeeAccounts} from '../Pages/EmployeeAccounts';
+import { Inventory } from '../Pages/Inventory';
 
 export const Admin = () => {
   return (
@@ -12,7 +12,7 @@ export const Admin = () => {
       <main className="main-content">
         <Header className="header" />
         <div className="content">
-          <EmployeeAccounts />
+          <Inventory />
         </div>
       </main>
     </div>
