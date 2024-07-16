@@ -6,7 +6,7 @@
     --color-black: #0C0C0C;
     --color-red: #FF0909;
     --color-white: #FFFFFF;
-    --color-gray: #f9f9f9;
+    --color-gray: #6c757d;
     --color-blue_black:#101A24;
 }
 
@@ -17,14 +17,14 @@
     scroll-behavior: smooth;
 }
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f7f7f7;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 a{
     color: unset;
