@@ -3,9 +3,10 @@ import '../Styles/Inventory.css';
 import ProductForm from '../Forms/ProductForm';
 
 const initialProducts = [
-  { name: "Rice", price: "GHC 430", quantity: "43 Packets", threshold: "12 Packets", expiry: "11/12/22", status: "in-stock" },
-  { name: "Cocktail", price: "GHC 257", quantity: "22 Packets", threshold: "12 Packets", expiry: "21/12/22", status: "out-of-stock" },
-  { name: "Red Bull", price: "GHC 405", quantity: "36 Packets", threshold: "9 Packets", expiry: "5/12/22", status: "in-stock" },
+  { name: "Rice", price: "GHC 430", quantity: "43 Packets", threshold: "12 Packets", expiry: "11/12/22", status: "in-stock", category: "Food" },
+  { name: "Cocktail", price: "GHC 257", quantity: "22 Packets", threshold: "12 Packets", expiry: "21/12/22", status: "out-of-stock", category: "Beverages" },
+  { name: "Red Bull", price: "GHC 405", quantity: "36 Packets", threshold: "9 Packets", expiry: "5/12/22", status: "low-stock", category: "Beverages" },
+  //Add more products with categories
 ];
 
 export const Inventory = () => {
@@ -20,7 +21,11 @@ export const Inventory = () => {
     threshold: '',
     expiry: '',
     status: 'in-stock',
+    category: '',
   });
+  const [successMessage, setSuccessMessage] = useState('');
+  const [currentPage, setCurrentPage] = useState(1);
+  const productsPerPage = 10;
 
   const handleAddProduct = () => {
     setFormData({
@@ -30,6 +35,7 @@ export const Inventory = () => {
       threshold: '',
       expiry: '',
       status: 'in-stock',
+      category: '',
     });
     setCurrentProduct(null);
     setFormVisible(true);
@@ -48,13 +54,14 @@ export const Inventory = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (currentProduct) {
-      // Update existing product
       setProducts(products.map(p => (p === currentProduct ? formData : p)));
+      setSuccessMessage("Product updated successfully!");
     } else {
-      // Add new product
       setProducts([...products, formData]);
+      setSuccessMessage("Product added successfully!");
     }
     setFormVisible(false);
+    setTimeout(() => setSuccessMessage(''), 3000);
   };
 
   const handleFilterProducts = () => {
@@ -66,7 +73,7 @@ export const Inventory = () => {
 
   const handleDownloadProducts = () => {
     const csvContent = "data:text/csv;charset=utf-8,"
-      + products.map(product => `${product.name},${product.price},${product.quantity},${product.threshold},${product.expiry},${product.status}`).join("\n");
+      + products.map(product => `${product.name},${product.price},${product.quantity},${product.threshold},${product.expiry},${product.status},${product.category}`).join("\n");
 
     const encodedUri = encodeURI(csvContent);
     const link = document.createElement("a");
@@ -77,31 +84,39 @@ export const Inventory = () => {
   };
 
   const handlePagination = (direction) => {
-    alert(`${direction} button clicked!`);
+    if (direction === 'Previous' && currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    } else if (direction === 'Next' && currentPage < Math.ceil(products.length / productsPerPage)) {
+      setCurrentPage(currentPage + 1);
+    }
   };
+
+  // Calculate current products to display
+  const indexOfLastProduct = currentPage * productsPerPage;
+  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+  const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);
+
+  // Calculate unique categories
+  const uniqueCategories = [...new Set(products.map(product => product.category))];
 
   return (
     <div className="container">
       <main className="main-content">
         <section className="overview">
           <div className="overview-item">
-            <span className="label">Categories</span>
-            <span className="value">14</span>
+            <span className="label">Categories </span>
+            <span className="value">{uniqueCategories.length} </span>
             <span className="subtext">Last 7 days</span>
           </div>
           <div className="overview-item">
-            <span className="label">Total Products</span>
-            <span className="value">{products.length}</span>
+            <span className="label">Total Products </span>
+            <span className="value">{products.length} </span>
             <span className="subtext">Last 7 days</span>
           </div>
+          
           <div className="overview-item">
-            <span className="label">Top Selling</span>
-            <span className="value">5</span>
-            <span className="subtext">Last 7 days</span>
-          </div>
-          <div className="overview-item">
-            <span className="label">Low Stocks</span>
-            <span className="value">12</span>
+            <span className="label">Low Stocks </span>
+            <span className="value">{products.filter(p => p.status === 'low-stock').length} </span>
             <span className="subtext">Ordered</span>
           </div>
         </section>
@@ -115,11 +130,20 @@ export const Inventory = () => {
               onChange={(e) => setFilter(e.target.value)}
               className="filter-input"
             />
-            <button className="btn add-product" onClick={handleAddProduct}>Add Product</button>
-            <button className="btn filters" onClick={handleFilterProducts}>Filter</button>
-            <button className="btn download" onClick={handleDownloadProducts}>Download all</button>
+            <button className="btn product_btn" onClick={handleAddProduct}>Add Product</button>
+            <button className="btn product_btn" onClick={handleFilterProducts}>Filter</button>
+            <button className="btn product_btn" onClick={handleDownloadProducts}>Download all</button>
           </div>
-
+          {successMessage && <div className="success-message">{successMessage}</div>}
+          {formVisible && (
+            <ProductForm
+              formData={formData}
+              setFormData={setFormData}
+              onSubmit={handleSubmit}
+              onCancel={() => setFormVisible(false)}
+              currentProduct={currentProduct}
+            />
+          )}
           <table className="products-table">
             <thead>
               <tr>
@@ -133,7 +157,7 @@ export const Inventory = () => {
               </tr>
             </thead>
             <tbody>
-              {products.map((product, index) => (
+              {currentProducts.map((product, index) => (
                 <tr key={index}>
                   <td>{product.name}</td>
                   <td>{product.price}</td>
@@ -151,20 +175,11 @@ export const Inventory = () => {
           </table>
 
           <div className="pagination">
-            <button className="btn prev" onClick={() => handlePagination('Previous')}>Previous</button>
-            <span>Page 1 of 10</span>
-            <button className="btn next" onClick={() => handlePagination('Next')}>Next</button>
+            <button className="btn prev" onClick={() => handlePagination('Previous')} disabled={currentPage === 1}>Previous</button>
+            <span>Page {currentPage} of {Math.ceil(products.length / productsPerPage)}</span>
+            <button className="btn next" onClick={() => handlePagination('Next')} disabled={currentPage === Math.ceil(products.length / productsPerPage)}>Next</button>
           </div>
         </section>
-
-        {formVisible && (
-          <ProductForm
-            formData={formData}
-            setFormData={setFormData}
-            onSubmit={handleSubmit}
-            onCancel={() => setFormVisible(false)}
-          />
-        )}
       </main>
     </div>
   );

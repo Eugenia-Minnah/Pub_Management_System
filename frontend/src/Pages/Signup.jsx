@@ -7,9 +7,12 @@ import bg from '../assets/bg.jpg';
 import google from '../assets/google.png';
 import apple from '../assets/apple.png';
 import facebook from '../assets/facebook_icon.png';
+import { useUser } from '../components/UserContext'
+
 
 export const Signup = () => {
-    const [username, setUsername] = useState('');
+    const { setUsername } = useUser();
+    const [username, setUsernameInput] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [termsAccepted, setTermsAccepted] = useState(false);
@@ -19,7 +22,6 @@ export const Signup = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        // Basic form validation
         if (!username || !email || !password) {
             setError('All fields are required');
             return;
@@ -31,7 +33,7 @@ export const Signup = () => {
         }
 
         setError('');
-
+        setUsername(username);
         navigate('/Admin');
     };
 
@@ -51,7 +53,7 @@ export const Signup = () => {
                             type='text'
                             placeholder='Username'
                             value={username}
-                            onChange={(e) => setUsername(e.target.value)}
+                            onChange={(e) => setUsernameInput(e.target.value)}
                             required
                         />
                     </div>

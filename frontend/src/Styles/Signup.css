@@ -105,20 +105,26 @@
     flex-direction: row;
     justify-content: center;
     gap: 15px;
-    margin-top: 20px;
+    margin-top: 25px;
+    background-color: #ffffff;
+    padding: 10px;
+    border-radius: 10px;
 }
 
 .social {
-    background-color: var(--color-gray);
-    padding: 10px;
+    background-color: #f0f0f0;
+    padding: 12px;
     border-radius: 30px;
     align-items: center;
+    display: flex;
+    justify-content: center;
 }
 
 .social img {
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
 }
+
 
 /* Media Queries for Responsiveness */
 @media (min-width: 768px) {

@@ -14,9 +14,9 @@ export const Admin = () => {
     <div className="app">
       <SideBar className="sidebar" />
       <main className="main-content">
-        <Header className="header" />
+        <Header className="header"/>
         <div className="content">
-          <Order />
+          <Inventory />
         </div>
       </main>
     </div>

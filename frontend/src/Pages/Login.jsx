@@ -7,9 +7,11 @@ import google from '../assets/google.png';
 import apple from '../assets/apple.png';
 import facebook from '../assets/facebook_icon.png';
 import { Link, useNavigate } from 'react-router-dom';
+import { useUser } from '../components/UserContext'
 
 export const Login = () => {
-    const [username, setUsername] = useState('');
+    const { setUsername } = useUser();
+    const [username, setUsernameInput] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const navigate = useNavigate();
@@ -24,7 +26,8 @@ export const Login = () => {
 
         if (username === 'user' && password === 'password') {
             setError('');
-            navigate.push('/Admin');
+            setUsername(username);
+            navigate('/Admin');
         } else {
             setError('Invalid username or password');
         }
@@ -46,7 +49,7 @@ export const Login = () => {
                             type='text'
                             placeholder='Username'
                             value={username}
-                            onChange={(e) => setUsername(e.target.value)}
+                            onChange={(e) => setUsernameInput(e.target.value)}
                             required
                         />
                     </div>
