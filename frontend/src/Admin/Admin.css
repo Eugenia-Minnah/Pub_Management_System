@@ -21,11 +21,12 @@
     overflow: auto;
     margin: 0;
 }
-
+.header{
+    padding: 15px;
+}
 .content {
     flex: 1;
     width: 100%;
     padding: 0;
-    background-color: #ffffff;
 }
 

@@ -1,0 +1,123 @@
+.product-form {
+    position: absolute; 
+    top: 20px;
+    left: 57%;
+    transform: translateX(-50%);
+    background-color: #fff; 
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    width: 100%;
+    max-width: 450px;
+}
+
+.form-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative; /* Position relative to allow absolute positioning of close button */
+}
+
+.close-button {
+    background-color: var(--color-red);
+    border: none;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: white;
+    font-size: 1rem;
+    position: absolute;
+    top: -28px;
+    right: -25px;
+}
+
+.close-button:hover {
+    background-color: var(--color-gray)
+}
+
+
+.product-form h2 {
+    margin-bottom: 20px;
+    font-size: 1.6rem;
+    color: var(--color-blue_black);
+    text-align: center;
+}
+
+.product-form input,
+.product-form select {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+    box-sizing: border-box;
+}
+
+.error {
+    color: red;
+    font-size: 0.875rem;
+    height: 20px; /* Set a fixed height */
+    margin: 0; /* Remove margin to prevent stretching */
+}
+
+.product-form input:focus,
+.product-form select:focus {
+    border-color:var(--color-blue_black); 
+    outline: none;
+}
+
+.button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+.button.submit {
+    background-color:rgb(5, 90, 5); 
+    color: white;
+}
+.button.submit:hover {
+    background-color: var(--color-gray)
+}
+.success-message {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: green;
+    font-size: 1rem;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    padding: 10px;
+    border: 1px solid green;
+    border-radius: 4px;
+    background-color: rgba(144, 238, 144, 0.2);
+    animation: fadeIn 0.5s ease-in;
+}
+.success-text {
+    font-weight: bold;
+}
+
+/* Animation for the success message */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+
