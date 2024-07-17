@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import '../Styles/Employee.css';
-import AddEmployeeForm from '../Form/AddEmployeeForm';
+import AddEmployeeForm from '../Forms/AddEmployeeForm';
 
 const initialEmployees = [
   { firstName: "Alice", lastName: "Johnson", phone: "123-456-7890", address: "123 Main St", position: "Manager" },

@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import '../Styles/AddEmployeeForm.css';
 
-export const AddEmployeeForm = ({ employee, onAdd, onEdit, onClose }) => {
+const AddEmployeeForm = ({ employee, onAdd, onEdit, onClose }) => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [phone, setPhone] = useState('');
@@ -74,3 +74,4 @@ export const AddEmployeeForm = ({ employee, onAdd, onEdit, onClose }) => {
     </div>
   );
 };
+export default AddEmployeeForm;
