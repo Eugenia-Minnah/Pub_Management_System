@@ -71,6 +71,13 @@
     color: #4d4444;
 }
 
+.conditions label{
+    display: inline-flex;
+    align-items: center;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
 .conditions label input{
     margin-right: 4px;
 }
