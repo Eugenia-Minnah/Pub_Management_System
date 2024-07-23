@@ -7,14 +7,14 @@ export const Admin = () => {
   const [activeComponent, setActiveComponent] = useState(null);
 
   return (
-    <div className="app">
+    <div className="admin-container">
       <SideBar setActiveComponent={setActiveComponent} className="sidebar"/>
-      <main className="main-content">
+      <div className="main-content">
         <Header className="header"/>
         <div className="content">
           {activeComponent}
         </div>
-      </main>
+      </div>
     </div>
   );
 };
